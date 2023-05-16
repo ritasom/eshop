@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\{ProductController,HomeController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('products/{id}', [ProductController::class, 'show'])->name("products.show");
+Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::get('/success', [ProductController::class, 'success'])->name('checkout.success');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
